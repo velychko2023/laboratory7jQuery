@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Приклад сторінки з jQuery UI</title>
+  <!-- Підключення стилів для jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <!-- Підключення jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Підключення скриптів для jQuery UI -->
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+  <style>
+    /* Стилі для слайдера */
+    #slider {
+      margin: 50px;
+    }
+    /* Стилі для випадного меню */
+    #menu {
+      margin: 50px;
+    }
+    /* Стилі для галереї */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .gallery img {
+      margin: 10px;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <!-- Слайдер -->
+  <div id="slider"></div>
+
+  <!-- Випадне меню -->
+  <ul id="menu">
+    <li><a href="#">Пункт 1</a></li>
+    <li><a href="#">Пункт 2</a></li>
+    <li><a href="#">Пункт 3</a></li>
+  </ul>
+
+  <!-- Галерея -->
+  <div class="gallery">
+    <img src="/img/work1.jpg" alt="Зображення 1">
+    <img src="/img/work2.jpg" alt="Зображення 2">
+    <img src="/img/work3.jpg" alt="Зображення 3">
+    <img src="/img/work4.jpg" alt="Зображення 4">
+    <img src="/img/work5.jpg" alt="Зображення 5">
+  </div>
+
+  <script>
+    // Код для слайдера
+    $( "#slider" ).slider({
+      min: 0,
+      max: 100,
+      value: 50
+    });
+
+    // Код для випадного меню
+    $( "#menu" ).menu();
+
+    // Код для галереї
+    $( ".gallery" ).on( "click", "img", function() {
+      var src = $(this).attr("src");
+      var alt = $(this).attr("alt");
+      $( "#dialog" ).html("<img src='" + src + "' alt='" + alt +
+      "'>").dialog({
+    width: 400,
+    height: 400
+  });
+});
+</script>
+</body>
+</html>
